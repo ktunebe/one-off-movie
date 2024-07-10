@@ -17,13 +17,16 @@ const thoughtSchema = new Schema({
     type: String,
     required: true
   },
-  reactions: [reactionSchema]
+  reactions: [reactionSchema],
+},  {
+  virtuals: true
 })
 
-thoughtSchema.methods.reactionCount = function() {
+// Creates virtual property 'reactionCount' that gets the amount of reactions per thought
+thoughtSchema.virtual('reactionCount').get(function() {
   return this.reactions.length
-}
+})
 
 const Thought = model('Thought', thoughtSchema)
 
-module.exports = Thought
+module.exports = Thought 
