@@ -18,8 +18,10 @@ const thoughtSchema = new Schema({
     required: true
   },
   reactions: [reactionSchema],
-},  {
-  virtuals: true
+}, {
+  toJSON: {
+    virtuals: true
+  }
 })
 
 // Creates virtual property 'reactionCount' that gets the amount of reactions per thought
