@@ -1,11 +1,15 @@
 
 const { Schema, Types } = require('mongoose')
 
+function formatDate(date) {
+  return date.toLocaleString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  })
+}
+
 const reactionSchema = new Schema({
-  reactionId: {
-    type: Schema.Types.ObjectId,
-    default: new Types.ObjectId
-  },
   reactionBody: {
     type: String,
     required: true,
@@ -17,7 +21,12 @@ const reactionSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    get: formatDate
+  }
+}, {
+  toJSON: {
+    getters: true
   }
 })
 
