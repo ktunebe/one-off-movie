@@ -10,7 +10,9 @@ app.use(express.json())
 app.use(routes)
 
 mongooseConnection.once('connected', () => {
-  console.log('Mongoose connected!')
+	console.log('Mongoose connected!')
 
-  app.listen(PORT, () => console.log(`Server listening at http://localhost:${PORT}`))
+	app.listen(PORT, () =>
+		console.log(`Server listening at http://localhost:${PORT}`)
+	)
 })
