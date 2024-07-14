@@ -57,7 +57,7 @@ router.delete('/:_id', async (req, res) => {
   const { _id } = req.params
   try {
     // Delete user by ID
-    const user = await User.findByIdAndDelete(_id, req.body, { new: true })
+    const user = await User.findByIdAndDelete(_id, { new: true })
     // Remove deleted user from other friends lists
     await User.updateMany({ friends: _id },
       { $pull: { friends: _id } },
@@ -84,7 +84,6 @@ router.post('/:userId/friends/:friendId', async (req, res) => {
       { $addToSet: { friends: friendId } },
       { new: true }
     )
-    console.log(user)
     res.json(user)
   } catch(err) {
     console.log(err)
@@ -100,7 +99,6 @@ router.delete('/:userId/friends/:friendId', async (req, res) => {
       { $pull: { friends: friendId } },
       { new: true }
     )
-    console.log(user)
     res.json(user)
   } catch(err) {
     console.log(err)

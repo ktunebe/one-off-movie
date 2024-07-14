@@ -25,13 +25,14 @@ mongooseConnection.once('connected', async () => {
   const thoughts = await Thought.insertMany(thoughtSeeds)
 
   for (const thought of thoughts) {
-    let thoughtUser = await User.findOne({
-      username: thought.username
-    })
+    await User.findOneAndUpdate(
+      { username: thought.username },
+      {$addToSet: { thoughts: thought._id }}
+    )
 
-    await User.findByIdAndUpdate(thoughtUser._id, {
-      $addToSet: { thoughts: thought._id }
-    })
+  //   await User.findByIdAndUpdate(thoughtUser._id, {
+  //     $addToSet: { thoughts: thought._id }
+  //   })
   }
 
   for (const user of users) {

@@ -1,5 +1,5 @@
 
-const { Schema, Types } = require('mongoose')
+const { Schema } = require('mongoose')
 
 function formatDate(date) {
   return date.toLocaleString('en-us', {
