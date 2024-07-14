@@ -32,7 +32,7 @@ Examples of User API Routes
 
 Routes Tested in Insomnia
 
-![Screenshot of the Insomnia Routes](/screenshots/nosql-insomnia-routes.png)
+![Screenshot of the Insomnia Routes](/screenshots/nosql-insomnia-route.png)
 
 
 Link to video of app in use: https://drive.google.com/file/d/1YRzNRZQVOmhkRgBUQunEJ28NGMxVx8JT/view
